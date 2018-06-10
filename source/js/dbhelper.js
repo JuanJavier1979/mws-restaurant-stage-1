@@ -8,7 +8,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
+    const port = 3000 // Change this to your server port
     return `http://localhost:${port}/data/restaurants.json`;
   }
 
@@ -149,8 +149,26 @@ class DBHelper {
   /**
    * Restaurant image URL.
    */
-  static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+  static imageUrlForRestaurant(restaurant, imgWidth = null) {
+    if (imgWidth !== null) {
+      return `/build/img/${restaurant.id}-${imgWidth}.jpg`;
+    }
+    return `/build/img/${restaurant.id}-original.jpg`;
+
+    //return (`/img/${restaurant.photograph}`);
+  }
+
+  /**
+   * Restaurant image SRCSET.
+   */
+  static imageSrcSetForRestaurant(restaurant) {
+    const widthXsmall   = DBHelper.imageUrlForRestaurant(restaurant, 'xsmall');
+    const widthSmall    = DBHelper.imageUrlForRestaurant(restaurant, 'small');
+    const widthMedium   = DBHelper.imageUrlForRestaurant(restaurant, 'medium');
+    const widthLarge    = DBHelper.imageUrlForRestaurant(restaurant, 'large');
+    const widthOriginal = DBHelper.imageUrlForRestaurant(restaurant);
+    const imageSrcSet = `${widthXsmall} 360w, ${widthSmall} 520w, ${widthMedium} 800w, ${widthLarge} 1000w, ${widthOriginal} 1500w`;
+    return imageSrcSet;
   }
 
   /**
