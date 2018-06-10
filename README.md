@@ -24,5 +24,18 @@ In a terminal, check the version of Python you have: `python -V`. If you have Py
 
 Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
 
+### How To Start
 
+1. Clone this repo.
+2. In a terminal CD to the Repo and type `npm install`.
+3. Run Gulp by just typing `gulp` to automatic run all gulp tasks and start web development server.
 
+### GULP tasks
+
+1. `gulp images`
+
+You might need to install a third party library on your system to manipulate images. The library is GraphicsMagick. To install it simply type `brew install graphicsmagick`. For more install options visit [gulp-responsive-images]https://github.com/dcgauld/gulp-responsive-images/
+
+2. `gulp scripts`
+3. `gulp styles`
+4. `gulp browser-sync`
